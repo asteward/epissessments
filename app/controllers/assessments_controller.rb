@@ -2,6 +2,7 @@ class AssessmentsController < ApplicationController
 
   def index
     @assessments = Assessment.all
+    @submissions = Submission.unassessed
     @submission = Submission.new
     authorize! :read, @assessments
   end
@@ -53,6 +54,6 @@ class AssessmentsController < ApplicationController
 private
 
   def assessment_params
-    params.require(:assessment).permit(:title, :section, :url)
+    params.require(:assessment).permit(:title, :section, :section_number, :url)
   end
 end

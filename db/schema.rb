@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140926162147) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section_number"
   end
 
   create_table "bank_accounts", force: true do |t|

@@ -41,4 +41,20 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :assessment do
+    title "Some Title"
+    section "Some Section"
+    url "http://www.someurl.com"
+  end
+
+  factory :submission do
+    link "www.githuburl.com"
+    note "This was hard."
+    graded "false"
+  end
+
+  factory :grade do
+    comment "Awesome"
+  end
 end
