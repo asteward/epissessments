@@ -20,22 +20,22 @@
   <div>
     <%= form_for([@assessment, @submission], method: "patch") do |f| %>
             <%= f.fields_for :grades do |g| %>
-            <div class="col-2">
-              <div>
-                <%= g.object.requirement.content %>
+              <div class="col-2">
+                <div>
+                  <%= g.object.requirement.content %>
+                </div>
+                <div>
+                  <%= g.radio_button :score, 4, class: "edit_grade" %>
+                  <%= g.radio_button :score, 3, class: "edit_grade" %>
+                  <%= g.radio_button :score, 2, class: "edit_grade" %>
+                  <%= g.radio_button :score, 1, class: "edit_grade" %>
+                  <%= g.hidden_field :requirement_id %>
+                </div>
               </div>
-              <div>
-                <%= g.radio_button :score, 4, class: "edit_grade" %>
-                <%= g.radio_button :score, 3, class: "edit_grade" %>
-                <%= g.radio_button :score, 2, class: "edit_grade" %>
-                <%= g.radio_button :score, 1, class: "edit_grade" %>
-                <%= g.hidden_field :requirement_id %>
-              </div>
-            </div>
             <% end %>
       <%= f.submit %>
     <% end %>
   </div>
 <% else %>
-  <%= render @submission.assessment.requirements %>
+  <h1>hey</h1>
 <% end %>

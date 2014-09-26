@@ -8,12 +8,12 @@ class GradesController < ApplicationController
     @submission = Submission.find(params[:grade][:submission_id])
     @requirements = @submission.requirements
     @assessment = Assessment.find(@submission.assessment_id)
-      if @grade.save
-        respond_to do |format|
-          format.html { redirect_to assessment_submission_path(@assessment, @submission) }
-          format.js
-        end
-      end
+      # if @grade.save
+      #   respond_to do |format|
+      #     format.html { redirect_to assessment_submission_path(@assessment, @submission) }
+      #     format.js
+      #   end
+      # end
   end
 
 private
