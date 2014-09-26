@@ -126,16 +126,40 @@ a.employer {
 }
 
 
-.col-group > div {
+.col-2 > div {
   padding: 1em 1em 0;
 }
 
 @media screen and (min-width: 50em) {
-  .col-group {
+  .col-2 {
     overflow: hidden;
   }
-  .col-group > div {
+  .col-2 > div {
     float: left;
-    width: 33.3333333%;
+    width: 50%;
+  }
+}
+
+.col-4 > div {
+  padding: 0 1em 1em;
+}
+@media screen and (min-width: 44em) {
+  .col-4 {
+    overflow: hidden;
+  }
+  .col-4 > div {
+    float: left;
+    width: 50%;
+  }
+  .col-4 > div:nth-child(odd) {
+    clear: left;
+  }
+}
+@media screen and (min-width: 64em) {
+  .col-4 > div {
+    width: 25%;
+  }
+  .col-4 > div:nth-child(odd) {
+    clear: none;
   }
 }

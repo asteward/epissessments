@@ -2,18 +2,40 @@
 <h2><%= @submission.user.name %>'s <%= link_to "#{@submission.assessment.title}", assessment_path(@submission.assessment) %> Assessment</h2>
 <a>View Repo</a>
 <hr>
+
 <h3>Assessment Requirements</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Requirement</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @submission.assessment.requirements %>
-  </tbody>
-</table>
+<div class="col-2">
+  <div>
+  </div>
+  <div class="col-4">
+    <div>4</div>
+    <div>3</div>
+    <div>2</div>
+    <div>1</div>
+  </div>
+</div>
+
+
+<% if current_user.admin? && @grade_page %>
+  <div>
+    <%= form_for([@assessment, @submission], method: "patch") do |f| %>
+            <%= f.fields_for :grades do |g| %>
+            <div class="col-2">
+              <div>
+                <%= g.object.requirement.content %>
+              </div>
+              <div>
+                <%= g.radio_button :score, 4, class: "edit_grade" %>
+                <%= g.radio_button :score, 3, class: "edit_grade" %>
+                <%= g.radio_button :score, 2, class: "edit_grade" %>
+                <%= g.radio_button :score, 1, class: "edit_grade" %>
+                <%= g.hidden_field :requirement_id %>
+              </div>
+            </div>
+            <% end %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+<% else %>
+  <%= render @submission.assessment.requirements %>
+<% end %>
